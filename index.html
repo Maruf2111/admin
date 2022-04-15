@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assests/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>adminpanel page</title>
+
+    <style>
+
+/* Admin navbar section */
+
+.admin-section {
+    padding: 0 12px;
+}
+
+.admin-section .navbar-nav{
+    width: 100%;
+}
+
+.admin-section .navbar .nav-link{
+    color: rgba(106, 113, 120, 1);
+}
+
+.admin-section .navbar .nav-link.active{
+    color: #ffff;
+    background-color: #41414B;
+}
+
+.admin-section .navbar{
+    height: 100%;
+    align-items: flex-start;
+    padding: 30px 50px;
+}
+
+/* Admin main section */
+
+
+.admin-user h6 {
+    padding-left: 50px;
+    cursor: pointer;
+}
+
+.admin-user img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #b5b3b3;
+    padding: 1px;
+}
+
+.admin-icon {
+    padding-right: 40px;
+    border-right: 1px solid #b5b3b3;
+    margin-top: 12px;
+}
+
+.admin-icon svg{
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.admin-count-item:hover h4{
+    color: #305AD2;
+}
+
+.admin-count-item:hover h1{
+    color: #305AD2;
+}
+
+.admin-count-item {
+    border: 2px solid #e9e9e9;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-count-item h4 {
+    color: #e9e9e9;
+    font-weight: 500;
+    transition: .3s;
+}
+
+.admin-count-item h1 {
+    font-weight: 700;
+    color: #497399;
+    transition: .3s;
+}
+
+.admin-chart {
+    border: 2px solid #d9d8d8;
+    border-radius: 10px;
+}
+
+.admin-chart-header-left p {
+    font-size: 14px;
+    color: #bdb9b9;
+}
+
+.admin-chart-header-right span {
+    color: #bbb6b6;
+    font-size: 16px;
+    padding: 0 10px;
+}
+
+.chart-count {
+    border: 1px solid #d9d8d8;
+}
+
+.chart-count h4 {
+    font-size: 18px;
+    color: #cbc7c7;
+}
+
+.chart-count span {
+    font-weight: 700;
+    font-size: 25px;
+    color: #6c6c6c;
+}
+
+#curve_chart{
+    text-align: center;
+    width: 100%!important;
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="admin-section">
+
+      <div class="row">
+        <!-- Navbar section starts -->
+
+        <div class="col-lg-3">
+            <nav class="navbar py-3 px-2 bg-dark">
+                <div class="container-fluid flex-nowrap p-0">
+
+                    <svg id="bar-icon" width="25" height="25" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0 5H12V7H0V5ZM0 0H16V2H0V0ZM0 12H7.235V10H0V12Z" fill="#6A7178"/>
+                    </svg>
+        
+                    <a class="navbar-brand py-4 px-3" href="#"><img src="img/logo.PNG"></a>
+                  <!-- Links -->
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link py-4 px-5 active" href="#"><svg width="22" height="22" viewBox="0 0 22 22" fill="white" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11 2C15.95 2 20 6.05 20 11C20 15.95 15.95 20 11 20C6.05 20 2 15.95 2 11C2 6.05 6.05 2 11 2ZM11 0.5C5.225 0.5 0.5 5.225 0.5 11C0.5 16.775 5.225 21.5 11 21.5C16.775 21.5 21.5 16.775 21.5 11C21.5 5.225 16.775 0.5 11 0.5Z" fill="currentColor"/>
+                        </svg>                        
+                        <span>Overview</span> </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link py-4 px-5" href="#"><svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 13C18 13.2652 17.8946 13.5196 17.7071 13.7071C17.5196 13.8946 17.2652 14 17 14C16.7348 14 16.4804 13.8946 16.2929 13.7071C16.1054 13.5196 16 13.2652 16 13V1C16 0.734784 15.8946 0.48043 15.7071 0.292893C15.5196 0.105357 15.2652 0 15 0H1C0.734784 0 0.48043 0.105357 0.292893 0.292893C0.105357 0.48043 0 0.734784 0 1V14C0 14.5304 0.210714 15.0391 0.585786 15.4142C0.960859 15.7893 1.46957 16 2 16H17C18.654 16 20 14.654 20 13V3H18V13ZM10 3H13V5H10V3ZM10 7H13V9H10V7ZM3 3H8V9H3V3ZM3 13V11H13V13H3Z" fill="currentColor"/>
+                        </svg>                        
+                        <span>Tickets</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link py-4 px-5" href="#"><svg height="25" width="25" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512"><path d="M96.06 454.35c.01 6.29 1.87 12.45 5.36 17.69l17.09 25.69a31.99 31.99 0 0 0 26.64 14.28h61.71a31.99 31.99 0 0 0 26.64-14.28l17.09-25.69a31.989 31.989 0 0 0 5.36-17.69l.04-38.35H96.01l.05 38.35zM0 176c0 44.37 16.45 84.85 43.56 115.78 16.52 18.85 42.36 58.23 52.21 91.45.04.26.07.52.11.78h160.24c.04-.26.07-.51.11-.78 9.85-33.22 35.69-72.6 52.21-91.45C335.55 260.85 352 220.37 352 176 352 78.61 272.91-.3 175.45 0 73.44.31 0 82.97 0 176zm176-80c-44.11 0-80 35.89-80 80 0 8.84-7.16 16-16 16s-16-7.16-16-16c0-61.76 50.24-112 112-112 8.84 0 16 7.16 16 16s-7.16 16-16 16z"/></svg>                                                                       
+                        <span>Commissions</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-5"><svg width="18" height="19" viewBox="0 0 18 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.5 4.5C4.5 6.981 6.519 9 9 9C11.481 9 13.5 6.981 13.5 4.5C13.5 2.019 11.481 0 9 0C6.519 0 4.5 2.019 4.5 4.5ZM17 19H18V18C18 14.141 14.859 11 11 11H7C3.14 11 0 14.141 0 18V19H17Z" fill="currentColor"/>
+                            </svg>                            
+                        <span>Users</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-5"><svg height="25" width="25" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M96 224c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm448 0c35.3 0 64-28.7 64-64s-28.7-64-64-64-64 28.7-64 64 28.7 64 64 64zm32 32h-64c-17.6 0-33.5 7.1-45.1 18.6 40.3 22.1 68.9 62 75.1 109.4h66c17.7 0 32-14.3 32-32v-32c0-35.3-28.7-64-64-64zm-256 0c61.9 0 112-50.1 112-112S381.9 32 320 32 208 82.1 208 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C179.6 288 128 339.6 128 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zm-223.7-13.4C161.5 263.1 145.6 256 128 256H64c-35.3 0-64 28.7-64 64v32c0 17.7 14.3 32 32 32h65.9c6.3-47.4 34.9-87.3 75.2-109.4z"/></svg>                                                                           
+                        <span>KYC</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-5"><svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.9243 21.3172C12.0743 21.29 12.2125 21.2179 12.3205 21.1103C12.4285 21.0027 12.5012 20.8648 12.529 20.7149L12.8969 18.7227C13.745 18.4048 14.5346 17.9486 15.2336 17.3727L17.1391 18.05C17.2826 18.1008 17.4382 18.1067 17.5851 18.0669C17.7321 18.0271 17.8634 17.9436 17.9618 17.8274L18.004 17.7782C18.8196 16.8149 19.4477 15.7274 19.8719 14.5461L19.893 14.4852C19.9329 14.3774 19.9446 14.2649 19.9329 14.1547C19.9118 13.9696 19.8227 13.7938 19.675 13.6649L18.1446 12.3547L18.1399 12.3524C18.2125 11.9071 18.25 11.4524 18.25 10.9977C18.25 10.6016 18.2219 10.2031 18.1657 9.81408C18.1586 9.76252 18.1493 9.71095 18.1422 9.65939C18.1422 9.6547 18.1399 9.64767 18.1399 9.64299L19.675 8.33048C19.8368 8.1922 19.9305 7.99298 19.9375 7.78673C19.9399 7.69298 19.9258 7.59689 19.893 7.50548L19.8719 7.44455C19.4493 6.26336 18.8164 5.16838 18.004 4.21251L17.9618 4.16329C17.8632 4.0474 17.7318 3.96409 17.585 3.92434C17.4381 3.88459 17.2827 3.89027 17.1391 3.94064L15.2336 4.61798C14.5305 4.04142 13.7477 3.58673 12.8993 3.26798H12.8969L12.529 1.27579C12.5266 1.26407 12.5243 1.25001 12.5196 1.23829C12.4857 1.09658 12.4115 0.967763 12.3058 0.867486C12.2001 0.767209 12.0676 0.699796 11.9243 0.673444L11.861 0.661725C10.6399 0.441412 9.35552 0.441412 8.13443 0.661725L8.07114 0.673444C7.92114 0.700624 7.78295 0.772803 7.67494 0.880392C7.56693 0.987981 7.49422 1.12589 7.46646 1.27579L7.09614 3.27735C6.25448 3.59617 5.47068 4.05062 4.77583 4.62267L2.8563 3.94064C2.71278 3.88987 2.55722 3.88399 2.41028 3.92376C2.26333 3.96353 2.13197 4.04708 2.03365 4.16329L1.99146 4.21251C1.17993 5.16905 0.547184 6.26385 0.123491 7.44455L0.102397 7.50548C0.0535561 7.6417 0.0450461 7.78911 0.0778878 7.93004C0.110729 8.07096 0.183528 8.19943 0.287553 8.30001C0.299272 8.30939 0.308647 8.32111 0.320366 8.33048L1.87427 9.65705V9.65939C1.80162 10.1 1.76646 10.5477 1.76646 10.9953C1.76646 11.4453 1.80162 11.8953 1.87427 12.3336L0.320366 13.6602C0.204575 13.7593 0.121701 13.8913 0.082766 14.0387C0.0438306 14.1861 0.0506777 14.3418 0.102397 14.4852L0.123491 14.5461C0.54771 15.7274 1.17583 16.8172 1.99146 17.7782L2.03365 17.8274C2.14849 17.961 2.30083 18.0477 2.46724 18.0782C2.5938 18.1016 2.7274 18.0946 2.8563 18.05L4.77583 17.368C4.77818 17.3703 4.78286 17.3727 4.78521 17.375C5.4813 17.9446 6.25708 18.3969 7.09614 18.7133L7.46646 20.7149C7.49422 20.8648 7.56693 21.0027 7.67494 21.1103C7.78295 21.2179 7.92114 21.29 8.07114 21.3172L8.13443 21.3289C8.74614 21.4391 9.37192 21.4953 9.99771 21.4953H10.0047C10.6282 21.4953 11.254 21.4391 11.861 21.3289L11.9243 21.3172ZM10.9915 19.7586C10.3295 19.8336 9.66121 19.8336 8.99927 19.7586L8.57974 17.4805L7.6938 17.1407C7.02583 16.8875 6.40474 16.5266 5.84927 16.0696L5.11333 15.4625L2.92427 16.2407C2.52583 15.7039 2.19302 15.125 1.92583 14.5156L3.69536 13.0039L3.54302 12.0664C3.48677 11.7172 3.4563 11.3563 3.4563 11C3.4563 10.6414 3.48443 10.2828 3.54302 9.93361L3.69536 8.99611L1.92583 7.48439C2.19068 6.87267 2.52583 6.29611 2.92427 5.75939L5.11333 6.53751L5.84927 5.93048C6.40474 5.47345 7.02583 5.11251 7.6938 4.85939L8.58208 4.52423L9.00161 2.2461C9.66021 2.1711 10.3329 2.1711 10.9938 2.2461L11.4133 4.51954L12.3063 4.8547C12.979 5.10782 13.6047 5.46876 14.1649 5.92814L14.9008 6.53283L17.0758 5.76173C17.4743 6.29845 17.8071 6.87736 18.0743 7.48673L16.3235 8.98439L16.4758 9.91955C16.5344 10.2735 16.5649 10.6367 16.5649 11C16.5649 11.3633 16.5344 11.7266 16.4758 12.0805L16.3211 13.0203L18.0719 14.518C17.8065 15.1295 17.4715 15.7083 17.0735 16.243L14.8985 15.4719L14.1625 16.0766C13.6024 16.536 12.979 16.8969 12.304 17.15L11.411 17.4852L10.9915 19.7586Z" fill="currentColor"/>
+                            </svg>                            
+                        <span>Settings</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link py-4 px-5"><svg width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.00006 0.150024C5.14365 0.150024 1.89074 3.02164 1.41241 6.84826L0.423492 14.7596C0.218369 16.4006 1.4979 17.85 3.15165 17.85H4.44763L4.47358 17.9084C5.2686 19.6972 7.04251 20.85 9.00002 20.85C10.9575 20.85 12.7314 19.6972 13.5265 17.9084L13.5524 17.85H14.8485C16.5022 17.85 17.7817 16.4006 17.5766 14.7596L16.5877 6.84826C16.1094 3.02164 12.8565 0.150024 9.00006 0.150024ZM13.0194 16.15C13.0068 16.1497 12.9942 16.1497 12.9816 16.15H5.01849C5.00589 16.1497 4.99327 16.1497 4.98062 16.15H3.15165C2.52045 16.15 2.03207 15.5968 2.11036 14.9705L3.09928 7.05912C3.47127 4.08322 6.001 1.85002 9.00006 1.85002C11.9991 1.85002 14.5288 4.08323 14.9008 7.05912L15.8897 14.9705C15.968 15.5968 15.4797 16.15 14.8485 16.15H13.0194ZM6.39817 17.85H11.6019C10.9959 18.6573 10.0372 19.15 9.00002 19.15C7.96286 19.15 7.00417 18.6573 6.39817 17.85Z" fill="currentColor"/>
+                            </svg>                            
+                        <span>Subscribers</span></a>
+                    </li>
+                  </ul>
+                <!-- </div> -->
+              </nav>
+        </div>
+
+        <!-- Navbar section ends -->
+
+        <!-- adminpanerl main section starts -->
+
+        <div class="col-lg-9">
+            <div class="admin-main-header d-flex justify-content-between p-4">
+                <div class="admin-main-header-left">
+                    <h4>Overview</h4>
+                    <button class="admin-header-btn">Add user</button>
+                </div>
+                <div class="admin-main-header-right d-flex align-items-start">
+                    <div class="admin-icon">
+                        <svg width="20" height="20" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.364 11.3566L13.218 11.2278C12.8039 10.8588 12.4414 10.4357 12.1403 9.9698C11.8115 9.32688 11.6145 8.62477 11.5607 7.90466V5.7837C11.5636 4.65264 11.1533 3.55947 10.407 2.70959C9.66064 1.8597 8.62965 1.3116 7.50771 1.16826V0.614403C7.50771 0.462388 7.44732 0.316599 7.33983 0.209108C7.23234 0.101617 7.08655 0.0412292 6.93454 0.0412292C6.78252 0.0412292 6.63673 0.101617 6.52924 0.209108C6.42175 0.316599 6.36136 0.462388 6.36136 0.614403V1.17684C5.24948 1.33052 4.23095 1.88194 3.49443 2.72897C2.75792 3.576 2.35333 4.66124 2.35559 5.7837V7.90466C2.30182 8.62477 2.10476 9.32688 1.77597 9.9698C1.48011 10.4345 1.12346 10.8576 0.715496 11.2278L0.569519 11.3566V12.5673H13.364V11.3566Z" fill="#6A7178"/>
+                        </svg>
+                        <svg width="20" height="20" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 16C9.77498 15.9996 11.4988 15.4054 12.897 14.312L17.293 18.708L18.707 17.294L14.311 12.898C15.405 11.4997 15.9996 9.77544 16 8C16 3.589 12.411 0 8 0C3.589 0 0 3.589 0 8C0 12.411 3.589 16 8 16ZM8 2C11.309 2 14 4.691 14 8C14 11.309 11.309 14 8 14C4.691 14 2 11.309 2 8C2 4.691 4.691 2 8 2Z" fill="#6A7178"/>
+                        </svg>                           
+                    </div>
+                    <div class="admin-user">
+                        <h6>Jhon Ferdiman <span class="px-1"><img src="img/main.jpg"></span></h6>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-count">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="admin-count-item py-4 px-3 text-center bg-info">
+                            <h4>Revenue</h4>
+                            <h1>$64</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="admin-count-item py-4 px-3 text-center bg-info">
+                            <h4>Users</h4>
+                            <h1>100</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="admin-count-item py-4 px-3 text-center bg-info">
+                            <h4>Active Users</h4>
+                            <h1>70</h1>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+                        <div class="admin-count-item py-4 px-3 text-center bg-info">
+                            <h4>Peding KYC</h4>
+                            <h1>10</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-chart my-4">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="admin-chart-header d-flex justify-content-between px-5 py-3">
+                            <div class="admin-chart-header-left">
+                                <h4>Today's trends</h4>
+                                <p>23 of May, 2022 11:20 P.M</p>
+                            </div>
+                            <div class="admin-chart-header-right">
+                                <span>---Today</span><span>---Yesterday</span>
+                            </div>
+                        </div>
+                        <div class="admin-chart-main">
+                            <div id="curve_chart" style="width: 100%; height: 400px"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="chart-result">
+                                <div class="col-lg-12">
+                                    <div class="chart-count text-center p-4">
+                                        <h4>Resolved</h4>
+                                        <span>445</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="chart-count text-center p-4">
+                                        <h4>Received</h4>
+                                        <span>426</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="chart-count text-center p-4">
+                                        <h4>Average first response time</h4>
+                                        <span>33m</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="chart-count text-center p-4">
+                                        <h4>Average response time</h4>
+                                        <span>3h 8m</span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="chart-count text-center p-4">
+                                        <h4>Resolution whithin SLA</h4>
+                                        <span>94%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- adminpanerl main section ends -->
+
+    </div>
+      
+    </div>
+
+
+
+    <!-- Bootatrap Link -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
